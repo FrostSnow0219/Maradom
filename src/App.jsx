@@ -20,6 +20,8 @@ import Merlin from "./pages/Merlin";
 import OpenSource from "./pages/OpenSource";
 import Privacy from "./pages/Privacy";
 
+import FAQ from "./pages/FAQ";
+
 import { AppProvider } from "./utils/context";
 
 // import KeyFeatures from './components/KeyFeatures';
@@ -45,6 +47,8 @@ function App() {
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/archie" element={<Archie />} />
             <Route path="/open-source" element={<OpenSource />} />
+
+            {/* <Route path="/faq" element={<FAQ />} /> */}
           </Routes>
           <Footer />
         </div>
