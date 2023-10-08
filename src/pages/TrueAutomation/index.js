@@ -5,8 +5,7 @@ import DetailSidebar from "../../components/DetailSidebar";
 import Header from "../../components/Header";
 const TrueAutomation = () => {
   return (
-    <div>
-      <Header />
+    <div className="detail-sidebar__page">
       <DetailSidebar
         id={data[0].id}
         title={data[0].title}

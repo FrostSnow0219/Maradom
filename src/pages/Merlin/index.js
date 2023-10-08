@@ -5,8 +5,7 @@ import DetailSidebar from "../../components/DetailSidebar";
 import Header from "../../components/Header";
 const Merlin = () => {
   return (
-    <div>
-      <Header />
+    <div className="detail-sidebar__page">
       <DetailSidebar
         id={data[5].id}
         title={data[5].title}

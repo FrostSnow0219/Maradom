@@ -5,8 +5,7 @@ import DetailSidebar from "../../components/DetailSidebar";
 import Header from "../../components/Header";
 const Archie = () => {
   return (
-    <div className="">
-      <Header />
+    <div className="detail-sidebar__page">
       <DetailSidebar
         id={data[3].id}
         title={data[3].title}

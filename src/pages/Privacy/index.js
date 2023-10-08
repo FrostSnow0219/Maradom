@@ -5,8 +5,7 @@ import DetailSidebar from "../../components/DetailSidebar";
 import Header from "../../components/Header";
 const Privacy = () => {
   return (
-    <div>
-      <Header />
+    <div className="detail-sidebar__page">
       <DetailSidebar
         id={data[4].id}
         title={data[4].title}

@@ -5,8 +5,7 @@ import DetailSidebar from "../../components/DetailSidebar";
 import Header from "../../components/Header";
 const Integration = () => {
   return (
-    <div>
-      <Header />
+    <div className="detail-sidebar__page">
       <DetailSidebar
         id={data[6].id}
         title={data[6].title}

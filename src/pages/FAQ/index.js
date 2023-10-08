@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import searchData from "../../search-data.json";
 import Collapsible from "../../components/collapse";
 import Fuse from "fuse.js";
@@ -8,16 +8,16 @@ const FAQ = () => {
   const [searchResults, setSearchResults] = useState([]);
   const heightHandler = () => {
     const x = document.getElementsByClassName("header")[0].clientHeight;
-    const y = document.getElementsByClassName("footer")[0].clientHeight;
+    const y = document.getElementById("footer").clientHeight;
 
-    document.getElementsByClassName("faqContainer")[0].style.maxHeight =
+    document.getElementsByClassName("faqContainer")[0].style.minHeight =
       window.innerHeight - x - y + "px";
   };
   const fuzzySearch = (query) => {
     // Configure the fuzzy search options
     const options = {
-      keys: ["question", "answer"],
-      threshold: 0.51, // Minimum match percentage threshold
+      keys: ["answer", "question"],
+      threshold: 0.81, // Minimum match percentage threshold
     };
 
     // Create a new instance of the fuzzy search algorithm
@@ -44,10 +44,10 @@ const FAQ = () => {
   const handleSearchInput = (e) => {
     const inputValue = e.target.value;
     console.log(e.target);
-    if (inputValue != "" || inputValue != null) setSearchInput(inputValue);
+    setSearchInput(inputValue);
 
     // Debounce the search execution to prevent excessive calls
-    debounceSearch(inputValue);
+    inputValue != "" ? debounceSearch(inputValue) : debounceSearch(" ");
   };
 
   const debounceSearch = debounce((inputValue) => {
@@ -60,7 +60,7 @@ const FAQ = () => {
       document.getElementsByClassName("header")[0].clientHeight;
     const footer_height =
       document.getElementsByClassName("footer")[0].clientHeight;
-    document.getElementsByClassName("faqContainer")[0].style.maxHeight =
+    document.getElementsByClassName("faqContainer")[0].style.height =
       window.innerHeight - header_height - footer_height + "px";
     window.addEventListener("resize", heightHandler);
     const results = fuzzySearch(searchInput);

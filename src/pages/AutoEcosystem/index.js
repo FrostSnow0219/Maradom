@@ -5,8 +5,7 @@ import DetailSidebar from "../../components/DetailSidebar";
 import Header from "../../components/Header";
 const AutoEcosystem = () => {
   return (
-    <div>
-      <Header />
+    <div className="detail-sidebar__page">
       <DetailSidebar
         id={data[1].id}
         title={data[1].title}

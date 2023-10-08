@@ -21,39 +21,56 @@ import OpenSource from "./pages/OpenSource";
 import Privacy from "./pages/Privacy";
 
 import FAQ from "./pages/FAQ";
+import Blog from "./pages/Blog";
+import BlogDetail from "./pages/BlogDetail";
 
 import { AppProvider } from "./utils/context";
+import { BodyScrollProvider } from "./utils/context";
+import { BodyPosProvider } from "./utils/context";
+import { useEffect } from "react";
 
 // import KeyFeatures from './components/KeyFeatures';
 
 function App() {
   return (
-    <AppProvider>
-      <Router>
-        <div id="App" className="App">
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/term-of-use" element={<TermOfUse />} />
-            <Route path="/sales-and-refunds" element={<SalesAndRefunds />} />
-            <Route path="/legal" element={<Legal />} />
+    <BodyScrollProvider>
+      <BodyPosProvider>
+        <AppProvider>
+          <Router>
+            <div id="App" className="App">
+              <Header id="land-header" />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/term-of-use" element={<TermOfUse />} />
+                <Route
+                  path="/sales-and-refunds"
+                  element={<SalesAndRefunds />}
+                />
+                <Route path="/legal" element={<Legal />} />
 
-            <Route path="/true-automation" element={<TrueAutomation />} />
-            <Route path="/autonomous-ecosystem" element={<AutoEcosystem />} />
-            <Route path="/security" element={<Security />} />
-            <Route path="/merlin" element={<Merlin />} />
-            <Route path="/integration" element={<Integration />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/archie" element={<Archie />} />
-            <Route path="/open-source" element={<OpenSource />} />
+                <Route path="/true-automation" element={<TrueAutomation />} />
+                <Route
+                  path="/autonomous-ecosystem"
+                  element={<AutoEcosystem />}
+                />
+                <Route path="/security" element={<Security />} />
+                <Route path="/merlin" element={<Merlin />} />
+                <Route path="/integration" element={<Integration />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/archie" element={<Archie />} />
+                <Route path="/open-source" element={<OpenSource />} />
 
-            {/* <Route path="/faq" element={<FAQ />} /> */}
-          </Routes>
-          <Footer />
-        </div>
-      </Router>
-    </AppProvider>
+                {/* <Route path="/faq" element={<FAQ />} /> */}
+                {/* <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:id" element={<BlogDetail />} /> */}
+              </Routes>
+              <Footer />
+            </div>
+          </Router>
+        </AppProvider>
+      </BodyPosProvider>
+    </BodyScrollProvider>
   );
 }
 

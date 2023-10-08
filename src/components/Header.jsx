@@ -1,22 +1,41 @@
 import Navbar from "./Navbar";
 import Hamburger from "./Hamburger";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-function Header() {
+import { ArticleContext } from "../utils/context";
+import { BodyScrollContext } from "../utils/context";
+function Header({ id }) {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
-
+  const { page, setPage } = useContext(ArticleContext);
+  const { bodyScroll, setBodyScroll } = useContext(BodyScrollContext);
   const toggleHamburger = () => {
     setHamburgerOpen(!hamburgerOpen);
+    setBodyScroll(!bodyScroll);
+    document.body.style.overflow = bodyScroll ? "auto" : "hidden";
+    if (Object.values(page).includes(true))
+      document.body.style.overflow = "hidden";
   };
   const location = useLocation();
-
+  const isSticky = (e) => {
+    console.log("scroll");
+    const header = document.querySelector(".header");
+    const scrollTop = window.scrollY;
+    scrollTop >= 250
+      ? header.classList.add("is-sticky")
+      : header.classList.remove("is-sticky");
+  };
   useEffect(() => {
     setHamburgerOpen(false);
   }, [location]);
-
+  // useEffect(() => {
+  //   window.addEventListener("scroll", isSticky);
+  //   return () => {
+  //     window.removeEventListener("scroll", isSticky);
+  //   };
+  // });
   return (
-    <div className="header">
+    <div className="header" id={`${id}`}>
       {/* <div className="container"> */}
       <div className="container_fullwidth">
         <div className="top-navigation-main">

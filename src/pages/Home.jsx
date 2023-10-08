@@ -24,93 +24,28 @@ function Home() {
         <Article />
       </div>
       <div className="detail-sidebar">
-        <div
-          id="true-automation"
-          className=""
-          style={{
-            position: "fixed",
-            left: "100%",
-            top: 0,
-            transitionDuration: "1s",
-          }}
-        >
+        <div id="true-automation" className="detail-sidebar__show">
           <TrueAutomation />
         </div>
-        <div
-          id="privacy"
-          style={{
-            position: "fixed",
-            left: "100%",
-            top: 0,
-            transitionDuration: "1s",
-          }}
-        >
+        <div className="detail-sidebar__show" id="privacy">
           <Privacy />
         </div>
-        <div
-          id="merlin"
-          style={{
-            position: "fixed",
-            left: "100%",
-            top: 0,
-            transitionDuration: "1s",
-          }}
-        >
+        <div className="detail-sidebar__show" id="merlin">
           <Merlin />
         </div>
-        <div
-          id="integration"
-          style={{
-            position: "fixed",
-            left: "100%",
-            top: 0,
-            transitionDuration: "1s",
-          }}
-        >
+        <div className="detail-sidebar__show" id="integration">
           <Integration />
         </div>
-        <div
-          id="autonomous-ecosystem"
-          style={{
-            position: "fixed",
-            left: "100%",
-            top: 0,
-            transitionDuration: "1s",
-          }}
-        >
+        <div className="detail-sidebar__show" id="autonomous-ecosystem">
           <AutoEcosystem />
         </div>
-        <div
-          id="security"
-          style={{
-            position: "fixed",
-            left: "100%",
-            top: 0,
-            transitionDuration: "1s",
-          }}
-        >
+        <div className="detail-sidebar__show" id="security">
           <Security />
         </div>
-        <div
-          id="archie"
-          style={{
-            position: "fixed",
-            left: "100%",
-            top: 0,
-            transitionDuration: "1s",
-          }}
-        >
+        <div className="detail-sidebar__show" id="archie">
           <Archie />
         </div>
-        <div
-          id="open-source"
-          style={{
-            position: "fixed",
-            left: "100%",
-            top: 0,
-            transitionDuration: "1s",
-          }}
-        >
+        <div className="detail-sidebar__show" id="open-source">
           <OpenSource />
         </div>
       </div>
