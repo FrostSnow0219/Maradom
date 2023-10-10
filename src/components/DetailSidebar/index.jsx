@@ -62,7 +62,7 @@ const DetailSidebar = ({
     // Your touch start logic here
   };
   const handleTouchEnd = (event) => {
-    if (isTwoFingerTouch) isTwoFingerTouch != isTwoFingerTouch;
+    // if (isTwoFingerTouch) isTwoFingerTouch != isTwoFingerTouch;
     // Your touch end logic here
     // Start a new animation if needed
     // const currentTime = Date.now();
@@ -98,15 +98,16 @@ const DetailSidebar = ({
   };
   const handleKeydown = (e) => {
     if (e.key === "Escape" || e.key === "Esc") {
-      document.getElementById(`${id}`).style.left = "100%";
-      document.getElementsByTagName("body")[0].style.overflow = "auto";
-      const temp = {};
-      temp[`${title}`] = false;
-      // setPage({ ...temp });
-      setTimeout(() => {
-        componentRef.current.scrollLeft = 0;
-        scrollRef.current.style.width = 0;
-      }, 250);
+      // document.getElementById(`${id}`).style.left = "100%";
+      // document.getElementsByTagName("body")[0].style.overflow = "auto";
+      // const temp = {};
+      // temp[`${title}`] = false;
+      // // setPage({ ...temp });
+      // setTimeout(() => {
+      //   componentRef.current.scrollLeft = 0;
+      //   scrollRef.current.style.width = 0;
+      // }, 250);
+      if (Object.values(page).includes(true)) handleClose();
     }
   };
   const handleBottomScroll = (event) => {
@@ -118,17 +119,20 @@ const DetailSidebar = ({
 
     setScrollState(temp);
   };
+
   useEffect(() => {
     const rect = barRef.current.getBoundingClientRect();
-    rect.width <= window.innerWidth && (scrollRef.current.style.width = "100%");
-    barRef?.current?.addEventListener("touchstart", handleTouchStart);
-    barRef?.current?.addEventListener("touchend", handleTouchEnd);
-    barRef.current.addEventListener("touchmove", handleMobileScroll);
-    componentRef.current.addEventListener("scroll", handleBottomScroll);
+    console.log(parseInt(rect.width), parseInt(window.innerWidth));
+    scrollRef.current.style.width =
+      (componentRef.current.scrollLeft /
+        (componentRef.current.scrollWidth - componentRef.current.clientWidth)) *
+        100 +
+      "%";
+    if (componentRef.current.scrollWidth == componentRef.current.clientWidth)
+      scrollRef.current.style.width = "100%";
     const onWheel = (e) => {
       if (e.deltaY == 0) return;
       e.preventDefault();
-      console.log(componentRef.current.scrollLeft, e.deltaY);
       document
         .getElementsByClassName("detail-sidebar__content")[0]
         .scrollTo(100, 100);
@@ -137,6 +141,10 @@ const DetailSidebar = ({
     // document
     //   .getElementById("land-header")
     //   .style.setProperty("display", "none", "important");
+    barRef?.current?.addEventListener("touchstart", handleTouchStart);
+    barRef?.current?.addEventListener("touchend", handleTouchEnd);
+    barRef.current.addEventListener("touchmove", handleMobileScroll);
+    componentRef.current.addEventListener("scroll", handleBottomScroll);
     window.addEventListener("resize", handleResize);
     window.addEventListener("keydown", handleKeydown);
     return () => {
@@ -144,6 +152,7 @@ const DetailSidebar = ({
       componentRef.current.removeEventListener("scroll", handleBottomScroll);
       barRef?.current?.removeEventListener("touchend", handleTouchEnd);
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("keydown", handleKeydown);
     };
   }, [page]);
 

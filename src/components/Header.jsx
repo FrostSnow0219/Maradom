@@ -43,11 +43,11 @@ function Header({ id }) {
             <a href="/">MajorDom</a>
           </div>
 
-          <div onClick={toggleHamburger}>
+          {/* <div onClick={toggleHamburger}>
             <Hamburger isOpen={hamburgerOpen} />
-          </div>
+          </div> */}
         </div>
-        <Navbar />
+        {/* <Navbar /> */}
       </div>
       <style>{`
         .burger .menu-icon:after {

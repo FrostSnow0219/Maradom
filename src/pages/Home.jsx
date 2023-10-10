@@ -14,13 +14,15 @@ import Security from "./Security";
 import OpenSource from "./OpenSource";
 
 import { ArticleContext } from "../utils/context";
+import MyForm from "../components/myform";
 function Home() {
   const { page, setPage } = useContext(ArticleContext);
   return (
     <div>
       <div>
         <TopBanner />
-        <MainSlider />
+        <MyForm />
+        {/* <MainSlider /> */}
         <Article />
       </div>
       <div className="detail-sidebar">

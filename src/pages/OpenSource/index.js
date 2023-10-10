@@ -8,7 +8,7 @@ const OpenSource = () => {
     <div className="detail-sidebar__page">
       <DetailSidebar
         id={data[7].id}
-        title={data[7].title}
+        title={data[7].origintitle}
         subtitle={data[7].description}
         title_style="opensource__title"
         logo={data[7].image1}

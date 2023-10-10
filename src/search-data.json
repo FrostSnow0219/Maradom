@@ -6,5 +6,13 @@
     {"question": "Can I install hub", "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tristique ipsum non lacus pulvinar blandit. Praesent porta in ligula id finibus. Vivamus eu pharetra risus, sit amet aliquet diam. Etiam fermentum scelerisque augue, a cursus diam iaculis ac. Sed sodales risus hendrerit dolor varius egesta"},
     {"question": "How to test components that use Hooks?", "answer": "From React’s point of view, a component using Hooks is just a regular component. If your testing solution doesn’t rely on React internals, testing components with Hooks shouldn’t be different from how you normally test components."},
     {"question": "Do Hooks replace render props and higher-order components?", "answer": "Often, render props and higher-order components render only a single child. We think Hooks are a simpler way to serve this use case. There is still a place for both patterns (for example, a virtual scroller component might have a renderItem prop, or a visual container component might have its own DOM structure). But in most cases, Hooks will be sufficient and can help reduce nesting in your tree."},
-    {"question": "Do Hooks work with static typing?", "answer": "Importantly, custom Hooks give you the power to constrain React API if you’d like to type them more strictly in some way. React gives you the primitives, but you can combine them in different ways than what we provide out of the box."}
+    {"question": "Do Hooks work with static typing?", "answer": "Importantly, custom Hooks give you the power to constrain React API if you’d like to type them more strictly in some way. React gives you the primitives, but you can combine them in different ways than what we provide out of the box."},
+   
+    { "question": "How to fix 'Failed to load next.config.js' error?", "answer": "See the error message in your terminal where you started next to see more context."},
+    { "question": "How to use breakpoints in the debugger?", "answer": "You can set conditions in the Breakpoints window by right-clicking a breakpoint and selecting Settings, and then selecting Conditions."},
+    { "question": "How to write accessible HTML?", "answer": "Our WAI-ARIA basics article will help to fill gaps in this."},
+    { "question":  "How to embed video and audio content in web pages?", "answer": "We'll move it up a gear, looking at how to use HTML to embed video and audio content in web pages."},
+    { "question": "How to fix 'Jest encountered an unexpected token' error?", "answer": "I'm wondering how did you find out which module was the problematic module?"},
+    { "question": "What is IntelliSense in Visual Studio Code?", "answer": "IntelliSense is provided for JavaScript, TypeScript, JSON, HTML, CSS, SCSS, and Less out of the box."}
+    
 ]

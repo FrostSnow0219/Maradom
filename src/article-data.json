@@ -175,9 +175,11 @@
   {
     "id":"open-source",
    "url":"/open-source",
-   "image":"/images/3-2.svg",
+   "image":"/images/3-2_original.png",
    "image1":"/images/3-2_original.svg",
-   "title" : "Open source",
+   "title" : "Open",
+   "dectitle": "source",
+   "origintitle": "Open source",
    "subtitle" : "",
    "description": "",
    "sidebar" : "",

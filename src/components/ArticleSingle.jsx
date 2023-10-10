@@ -37,7 +37,12 @@ function ArticleSingle(props) {
             height="originHeight"
           />
         </div>
-        <span className="article_title">{props.item.title}</span>
+        <span className="article_title">
+          <span>{props.item.title}</span>
+          {props.item.dectitle && (
+            <span className="article_dectitle"> {props.item.dectitle}</span>
+          )}
+        </span>
         <span className="article_subtitle">{props.item.subtitle}</span>
         <div className="product_item-detail">
           <a

@@ -48,24 +48,15 @@ function App() {
                   element={<SalesAndRefunds />}
                 />
                 <Route path="/legal" element={<Legal />} />
-
-                <Route path="/true-automation" element={<TrueAutomation />} />
-                <Route
-                  path="/autonomous-ecosystem"
-                  element={<AutoEcosystem />}
-                />
-                <Route path="/security" element={<Security />} />
                 <Route path="/merlin" element={<Merlin />} />
-                <Route path="/integration" element={<Integration />} />
-                <Route path="/privacy" element={<Privacy />} />
                 <Route path="/archie" element={<Archie />} />
-                <Route path="/open-source" element={<OpenSource />} />
 
-                {/* <Route path="/faq" element={<FAQ />} /> */}
-                {/* <Route path="/blog" element={<Blog />} />
+                {/* 
+                <Route path="/faq" element={<FAQ />} />
+                <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:id" element={<BlogDetail />} /> */}
               </Routes>
-              <Footer />
+              {/* <Footer /> */}
             </div>
           </Router>
         </AppProvider>
