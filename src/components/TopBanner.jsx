@@ -4,6 +4,10 @@ function TopBanner() {
   const handleClick = () => {
     document.getElementsByClassName("form")[0].style.display = "flex";
     document.body.style.overflow = "hidden";
+    document.body.style.touchAction = "none";
+    setTimeout(() => {
+      document.body.style.position = "fixed";
+    }, 300);
   };
   return (
     <>

@@ -10,7 +10,7 @@ const Collapsible = ({
   children,
   header,
 }) => {
-  const [isOpen, setIsOpen] = useState(open);
+  const [isOpen, setIsOpen] = useState(false);
   const [height, setHeight] = useState(open ? undefined : 0);
   const ref = useRef(null);
   const handleFilterOpening = () => {

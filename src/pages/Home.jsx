@@ -22,7 +22,7 @@ function Home() {
       <div>
         <TopBanner />
         <MyForm />
-        {/* <MainSlider /> */}
+        <MainSlider />
         <Article />
       </div>
       <div className="detail-sidebar">

@@ -248,6 +248,9 @@ body{
 	background-color: #000;
 	padding-top: 55px;
 }
+.container_bg .slick-slider{
+	opacity: 0
+}
 a{
 	text-decoration: none;
 	color: #ffffff;
@@ -926,10 +929,10 @@ a.purple_btn:hover {
 
 @media screen and (min-width: 1141px) {
 	.collapsible-header-edonec {
-		font-size: 30px !important;
+		/* font-size: 30px !important; */
 	}
 	.collapsible-content-padding-edonec {
-		font-size: 22px !important;
+		/* font-size: 22px !important; */
 	}
 }
 @media screen and (max-width: 1140px){
@@ -947,11 +950,11 @@ a.purple_btn:hover {
 		
 	}
 	.collapsible-header-edonec {
-		font-size: 26px !important;
+		/* font-size: 26px !important; */
 	}
 
 	.collapsible-content-padding-edonec {
-		font-size: 18px !important;
+		/* font-size: 18px !important; */
 	}
 
 }
@@ -1303,7 +1306,17 @@ a.purple_btn:hover {
 	#item-7 .article_title {
 		bottom: 15% !important;
 	}
-
+	.form{
+		justify-content: center;
+	}
+	.form form{
+		padding-top: 0 !important;
+		justify-content: center;
+	}
+	.form .form-email {
+		background-color: black !important;
+		color: white !important;
+	}
 }
 @media screen and (max-width: 400px){
 	.main_slider {
@@ -2011,16 +2024,25 @@ a.purple_btn:hover {
 	padding-top: 90px;
 	padding-bottom: 80px;
 	background-color: black;
-	overflow-y: scroll;
 }
 .QAList { 
 	display: flex;
 	flex-direction: column;
 	gap: 30px;
+	padding-top: 90px;
+	height: calc(100% - 56px);
+	overflow: auto;
+}
+.QAList::-webkit-scrollbar{
+	width: 5px;
+	background-color: black;
+}
+.QAList::-webkit-scrollbar-thumb{
+	background-color: white;
+	border-radius: 10px;
 }
 .faqContainer .search-form{
 	display: flex;
-	margin-bottom: 90px;
 	padding: 15px 30px;
 	background-color: #161617;
 	border-radius: 18px;
@@ -2066,44 +2088,56 @@ a.purple_btn:hover {
  .form {
 	position: fixed;
 	display: none;
-	justify-content: center;
+	flex-direction: column;
 	align-items: center;
 	padding: 0 80px;
-	top: 0;
+	top: 110px;
 	left: 0;
 	width: 100vw;
-	height: 100vh;
+	height: calc(100vh - 110px);
 	background-color: black;
+	overflow-y: auto;
 	z-index: 5;
+	transform-origin: center;
+	transition: 0.3s ease-in-out;
  }
  .form .close-btn {
 	position: absolute;
-	top: 210px;
-	right: 80px;
+	top: 110px;
+	right: 30px;
 	width: 40px;
 	height: 40px;
+	border: none;
 	border-radius: 50%;
 	cursor: pointer;
  }
  .form form{
-	margin: auto 0;
 	display: flex;
-	justify-content: center;
+	padding-top: 150px;
 	align-items: center;
+	justify-content: center;
 	width: 100%;
 	flex-direction: column;
 	font-size: 24px;
 	gap: 30px;
  }
  .form .title{
+	font-family: Gotham Pro;
 	font-size: 24px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 100%;
+	letter-spacing: -0.6px;
 	text-align: center;
  }
  .form .subtitle{
+	font-family: Gotham Pro;
 	font-size: 18px;
-	text-align: center;
-	letter-spacing: -0.45px;
+	font-style: normal;
+	font-weight: 300;
 	line-height: 100%;
+	letter-spacing: -0.45px;
+	text-align: center;
  }
 .form input{
 	padding: 10px 0;
@@ -2113,24 +2147,54 @@ a.purple_btn:hover {
 	font-size: 16px;
 	border:none;
 	border-bottom: 1px solid white;
-	opacity: 0.5;
+	opacity: 1;
 	letter-spacing: -0.4px;
 	transition: 0.3s ease-in-out;
 }
-.form input:focus{
-	opacity: 1;
-}
 .form .submit-btn{
-	padding: 13px 41px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 187px;
+	height: 40px;
+	padding: 13px 0;
 	background-color: transparent;
 	color: white;
 	border: 2px solid white;
 	font-size: 18px;
+	text-align: center;
+	font-family: Gotham Pro;
+	font-style: normal;
 	letter-spacing: -0.48px;
 	cursor: pointer;
 	transition: 0.3s ease-in-out;
+	gap: 10px;
+	flex-shrink: 0;
 }
 .form .submit-btn:hover{
 	background-color: white;
 	color: black;
+}
+.form .input__container {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	width: 100%;
+	font-size: 16px;
+}
+.form .input__container span{
+	color: red;
+}
+.form .checkbox__container {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 14px;
+}
+.form .checkbox__container input{
+	width: 15px;
+	height: 15px;
+	background-color: black;
+	border: 2px solid black
 }

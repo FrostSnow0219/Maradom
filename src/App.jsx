@@ -4,25 +4,19 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import { Routes, Route, HashRouter } from "react-router-dom";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermOfUse from "./pages/TermOfUse";
 import SalesAndRefunds from "./pages/SalesAndRefunds";
 import Legal from "./pages/Legal";
 import Home from "./pages/Home";
 
-import TrueAutomation from "./pages/TrueAutomation";
-import AutoEcosystem from "./pages/AutoEcosystem";
-import Security from "./pages/Security";
 import Archie from "./pages/Archie";
-import Integration from "./pages/Integration";
 import Merlin from "./pages/Merlin";
-import OpenSource from "./pages/OpenSource";
-import Privacy from "./pages/Privacy";
 
 import FAQ from "./pages/FAQ";
-import Blog from "./pages/Blog";
-import BlogDetail from "./pages/BlogDetail";
+// import Blog from "./pages/Blog";
+// import BlogDetail from "./pages/BlogDetail";
 
 import { AppProvider } from "./utils/context";
 import { BodyScrollProvider } from "./utils/context";
@@ -51,12 +45,12 @@ function App() {
                 <Route path="/merlin" element={<Merlin />} />
                 <Route path="/archie" element={<Archie />} />
 
-                {/* 
                 <Route path="/faq" element={<FAQ />} />
+                {/* 
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:id" element={<BlogDetail />} /> */}
               </Routes>
-              {/* <Footer /> */}
+              <Footer />
             </div>
           </Router>
         </AppProvider>

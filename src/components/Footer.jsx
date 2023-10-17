@@ -4,10 +4,10 @@ function Footer() {
   return (
     <div id="footer" className="container_fullwidth">
       <div className="footer">
-        <div className="bottom-navigation-main">
-          {/* <div className="logo">
+        {/* <div className="bottom-navigation-main">
+           <div className="logo">
                     <a href="/">majordom</a>
-                </div> */}
+                </div> 
           <div className="social">
             <a href="#" className="github"></a>
             <a href="#" className="kickstarter"></a>
@@ -16,13 +16,13 @@ function Footer() {
             <a href="#" className="instagram"></a>
             <a href="#" className="twitter"></a>
           </div>
-        </div>
+        </div> */}
         <div className="bottom-navigation-secondary">
           <div className="copyright">
             Copyright © 2023 Majordom. All rights reserved.
           </div>
 
-          <NavbarFooter />
+          {/* <NavbarFooter /> */}
         </div>
       </div>
     </div>

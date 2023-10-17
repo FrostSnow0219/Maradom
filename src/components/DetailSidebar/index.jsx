@@ -98,15 +98,6 @@ const DetailSidebar = ({
   };
   const handleKeydown = (e) => {
     if (e.key === "Escape" || e.key === "Esc") {
-      // document.getElementById(`${id}`).style.left = "100%";
-      // document.getElementsByTagName("body")[0].style.overflow = "auto";
-      // const temp = {};
-      // temp[`${title}`] = false;
-      // // setPage({ ...temp });
-      // setTimeout(() => {
-      //   componentRef.current.scrollLeft = 0;
-      //   scrollRef.current.style.width = 0;
-      // }, 250);
       if (Object.values(page).includes(true)) handleClose();
     }
   };
@@ -122,7 +113,6 @@ const DetailSidebar = ({
 
   useEffect(() => {
     const rect = barRef.current.getBoundingClientRect();
-    console.log(parseInt(rect.width), parseInt(window.innerWidth));
     scrollRef.current.style.width =
       (componentRef.current.scrollLeft /
         (componentRef.current.scrollWidth - componentRef.current.clientWidth)) *
@@ -145,7 +135,8 @@ const DetailSidebar = ({
     barRef?.current?.addEventListener("touchend", handleTouchEnd);
     barRef.current.addEventListener("touchmove", handleMobileScroll);
     componentRef.current.addEventListener("scroll", handleBottomScroll);
-    window.addEventListener("resize", handleResize);
+    !Object.values(page).includes(true) &&
+      window.addEventListener("resize", handleResize);
     window.addEventListener("keydown", handleKeydown);
     return () => {
       barRef?.current?.removeEventListener("touchstart", handleTouchStart);
@@ -159,11 +150,11 @@ const DetailSidebar = ({
   const handleClose = () => {
     document.getElementById(`${id}`).style.left = "100%";
     document.body.style.touchAction = "auto";
-    document.getElementById("land-header").style.borderBottom = "0px #999";
-    setBodyScroll(!bodyScroll);
     document.body.style.overflow = bodyScroll ? "initial" : "hidden";
     document.body.style.position = "relative";
     window.scrollTo(0, bodyPos);
+    document.getElementById("land-header").style.borderBottom = "0px #999";
+    setBodyScroll(!bodyScroll);
     // document.getElementsByTagName("html")[0].style.overflow = bodyScroll
     //   ? "initial"
     //   : "hidden";
