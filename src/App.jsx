@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import { Routes, Route, HashRouter } from "react-router-dom";
-import { HashRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermOfUse from "./pages/TermOfUse";
 import SalesAndRefunds from "./pages/SalesAndRefunds";
