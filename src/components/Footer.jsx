@@ -1,8 +1,8 @@
 import NavbarFooter from "./NavbarFooter";
 
-function Footer() {
+function Footer({ id }) {
   return (
-    <div id="footer" className="container_fullwidth">
+    <div id={`${id}`} className="container_fullwidth">
       <div className="footer">
         {/* <div className="bottom-navigation-main">
            <div className="logo">

@@ -1317,6 +1317,9 @@ a.purple_btn:hover {
 		background-color: black !important;
 		color: white !important;
 	}
+	.faqContainer {
+		padding-top: 30px !important;	
+	}
 }
 @media screen and (max-width: 400px){
 	.main_slider {
@@ -1359,7 +1362,7 @@ a.purple_btn:hover {
 		font-size: 14px !important;
 	}
 	.collapsible-card-edonec {
-		padding: 10px !important;
+		padding: 20px !important;
 	}
 	#item-0 .product_img {
 		width: 90% !important;
@@ -1927,10 +1930,6 @@ a.purple_btn:hover {
 	display: block;
 	max-width: 90%;
 	font-size: 1em;
-	margin-block-start: 0.83em;
-	margin-block-end: 0.83em;
-	margin-inline-start: 0px;
-	margin-inline-end: 0px;
 	font-weight: bold;
 }
 
@@ -1944,6 +1943,7 @@ a.purple_btn:hover {
 	min-width: 5%;
 }
 .collapsible-content-padding-edonec {
+	padding-top: 15px;
 	font-size: 16px;
 	opacity: 0.6;
 }
@@ -2021,7 +2021,7 @@ a.purple_btn:hover {
 }
 .faqContainer { 
 	padding: 0 80px;
-	padding-top: 90px;
+	padding-top: 70px;
 	padding-bottom: 80px;
 	background-color: black;
 }
@@ -2030,24 +2030,17 @@ a.purple_btn:hover {
 	flex-direction: column;
 	gap: 30px;
 	padding-top: 90px;
-	height: calc(100% - 56px);
-	overflow: auto;
-}
-.QAList::-webkit-scrollbar{
-	width: 5px;
-	background-color: black;
-}
-.QAList::-webkit-scrollbar-thumb{
-	background-color: white;
-	border-radius: 10px;
 }
 .faqContainer .search-form{
 	display: flex;
-	padding: 15px 30px;
+	justify-content: center;
+	align-items: center;
+	padding: 15px;
 	background-color: #161617;
 	border-radius: 18px;
 }
 .faqContainer .search-form img{
+	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -2060,6 +2053,32 @@ a.purple_btn:hover {
 	font-size: 22px;
 	border: none;
 	border-radius: 18px;
+}
+.faqContainer .search-form .reset {
+	width: 20px;
+	/* Adjust the size as needed */
+	height: 20px;
+	/* Adjust the size as needed */
+	position: relative;
+	cursor: pointer;
+}
+.faqContainer .search-form .reset::before, .faqContainer .search-form .reset::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 3px;
+	/* Adjust the thickness of the lines */
+	height: 100%;
+	/* Adjust the length of the lines */
+	background-color: #fff;
+	/* Adjust the color */
+}
+.faqContainer .search-form .reset::before {
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+.faqContainer .search-form .reset::after {
+	transform: translate(-50%, -50%) rotate(-45deg);
 }
 .is-sticky {
 	filter: invert(1);

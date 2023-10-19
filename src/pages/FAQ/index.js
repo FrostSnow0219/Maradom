@@ -1,22 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
-import searchData from "../../search-data.json";
+import searchData from "../../faq.json";
 import Collapsible from "../../components/collapse";
 import Fuse from "fuse.js";
 
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 const FAQ = () => {
   const [searchInput, setSearchInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const heightHandler = () => {
-    const x = document.getElementsByClassName("header")[0].clientHeight;
-    const y = document.getElementById("footer").clientHeight;
 
-    document.getElementsByClassName("faqContainer")[0].style.height =
-      window.innerHeight - x - y + "px";
-  };
   const fuzzySearch = (query) => {
     // Configure the fuzzy search options
     const options = {
-      keys: ["question", "answer"],
+      keys: ["question", "answer", "tags"],
       threshold: 0.51, // Minimum match percentage threshold
       useLevenshteinAutomaton: true,
     };
@@ -50,38 +46,48 @@ const FAQ = () => {
     // Debounce the search execution to prevent excessive calls
     debounceSearch(inputValue);
   };
+  const handleReset = () => {
+    setSearchInput("");
+    setSearchResults(fuzzySearch(" "));
+  };
   useEffect(() => {
+    document.getElementById("land-header").style.display = "none";
+    document.getElementById("land-footer").style.display = "none";
+
     const header_height =
       document.getElementsByClassName("header")[0].clientHeight;
     const footer_height =
       document.getElementsByClassName("footer")[0].clientHeight;
-    document.getElementsByClassName("faqContainer")[0].style.height =
+    document.getElementsByClassName("faqContainer")[0].style.minHeight =
       window.innerHeight - header_height - footer_height + "px";
-    window.addEventListener("resize", heightHandler);
     const results = fuzzySearch(searchInput);
     setSearchResults(results);
-    debounceSearch("");
-    return window.removeEventListener("resize", heightHandler);
+    debounceSearch(" ");
   }, []);
 
   return (
-    <div className="faqContainer">
-      <div className="search-form">
-        <img src="images/search-normal.svg" />
-        <input
-          type="input"
-          placeholder="type a question"
-          onChange={handleSearchInput}
-          value={searchInput}
-        />
+    <div className="fContainer">
+      <Header />
+      <div className="faqContainer">
+        <div className="search-form">
+          <img src="images/search-normal.svg" />
+          <input
+            type="input"
+            placeholder="type a question"
+            onChange={handleSearchInput}
+            value={searchInput}
+          />
+          <span className="reset" onClick={() => handleReset()}></span>
+        </div>
+        <div className="QAList">
+          {searchResults.map((value, index) => (
+            <Collapsible header={value.item.question} open={false} id={index}>
+              {value.item.answer}
+            </Collapsible>
+          ))}
+        </div>
       </div>
-      <div className="QAList">
-        {searchResults.map((value) => (
-          <Collapsible header={value.item.question} open={false}>
-            {value.item.answer}
-          </Collapsible>
-        ))}
-      </div>
+      <Footer />
     </div>
   );
 };
