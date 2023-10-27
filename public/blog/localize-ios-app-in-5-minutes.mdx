@@ -15,13 +15,13 @@ But we wouldn't be developers if we didn't always try to automate everything. Au
 I won't go into detail about how localization of strings works in xcode project, there are already many other tutorials. I'll just highlight a few key steps:
 
 1.  Create Localizable.strings file and fill it with strings you want to localize.
-    ```
+```
     /* optional description */
     "[key]" = "[string]";
     
     /* Example: */
     "welcome text" = "Welcome to XCodeLocalize";
-    ```
+```
 2.  Go to the project file settings, add the desired languages. Apple recommended EFIGS (English French Italian German Spanish) + Chinese as a base.
 3.  Create Localizable.strings files for all selected languages. You may also want to localize plist, storyboard and intentdefinition files.
 
@@ -58,10 +58,10 @@ python3 -m xcodelocalize [OPTIONS]
 -   `--format-base / --no-format-base`: sort base file strings by key. _[default: no-format-base]_
 -   `--file`: Names of the strings files to be translated. Multiple files can be specified. If not specified, all files will be translated. _[default: None]_
     Example:
-    ```shell
+```shell
     xcodelocalize --file InfoPlist
     xcodelocalize --file InfoPlist --file MainStoryboard --file Localizable 
-    ```
+ ```
 
 -   `--key`: Keys of the strings to be translated. Multiple keys can be specified. If not specified, all keys will be translated. _[default: None]_
 -   `--language`: Language codes of the strings files to be translated. Multiple language codes can be specified. If not specified, all files will be translated. _[default: None]_

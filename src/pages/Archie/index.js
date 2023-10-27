@@ -10,7 +10,7 @@ const Archie = () => {
         id={data[3].id}
         title={data[3].title}
         subtitle={data[3].description}
-        logo={data[3].image1}
+        logo={data[3].detailSidebarImage}
         content={data[3].content}
       />
     </div>

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { BeatLoader } from "react-spinners";
 import validator from "validator";
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-const MyForm = () => {
+const ContactForm = () => {
   const {
     register,
     handleSubmit,
@@ -144,4 +144,4 @@ const MyForm = () => {
   );
 };
 
-export default MyForm;
+export default ContactForm;

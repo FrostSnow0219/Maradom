@@ -1,56 +1,24 @@
-import React from "react";
-
-const data = [
-  {
-    url: "building-a-smart-home-from-voice-assistant-to-major-dom-v-1-0",
-    bg_url: "/images/blog.svg",
-    release: "Latest",
-    title: "MajorDom finally finished the ladning age design",
-  },
-  {
-    url: "inside-major-dom-v-1-0-exploring-the-architecture-of-a-new-smart-home-systemcurrent status",
-    bg_url: "/images/blog.svg",
-    release: "Tag",
-    title: "MajorDom finally finished the ladning age design",
-  },
-  {
-    url: "localize-ios-app-in-5-minutes",
-    bg_url: "/images/blog.svg",
-    release: "Tag",
-    title: "MajorDom finally finished the ladning age design",
-  },
-  {
-    url: "stark-the-voice-assistants-framework",
-    bg_url: "/images/blog.svg",
-    release: "Tag",
-    title: "MajorDom finally finished the ladning age design",
-  },
-  {
-    url: "current status",
-    bg_url: "/images/blog.svg",
-    release: "Tag",
-    title: "MajorDom finally finished the ladning age design",
-  },
-  {
-    url: "current status",
-    bg_url: "/images/blog.svg",
-    release: "Tag",
-    title: "MajorDom finally finished the ladning age design",
-  },
-];
+import React, { useEffect } from "react";
+import data from "../../blog-data.json";
 
 const Blog = () => {
+  const baseURL = window.location.origin;
+  useEffect(() => {
+    const header_height =
+      document.getElementsByClassName("header")[0].clientHeight;
+    const footer_height =
+      document.getElementsByClassName("footer")[0].clientHeight;
+
+    const temp = window.innerHeight - header_height - footer_height;
+    document.getElementsByClassName("blog__container")[0].style.minHeight =
+      temp + "px";
+  });
   return (
     <div className="blog__container">
       {data.map((item) => (
         <div className="blog-item">
-          <a className="blog-item__img" href={`blog/${item.url}`}>
-            <img
-              src={item.bg_url}
-              alt=""
-              width="originWidth"
-              height="originHeight"
-            />
+          <a className="blog-item__img" href={`${baseURL}/blog/${item.url}`}>
+            <img src={item.bg_url} alt="" />
           </a>
           <span className="blog-item__release">{item.release}</span>
           <div className="blog-item__title">{item.title}</div>

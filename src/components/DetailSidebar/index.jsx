@@ -10,7 +10,6 @@ import { ArticleContext, BodyPosContext } from "../../utils/context";
 import { BodyScrollContext } from "../../utils/context";
 export function useHorizontalScroll() {
   const elRef = useRef();
-
   useEffect(() => {
     const el = elRef.current;
     if (el) {
@@ -41,113 +40,41 @@ const DetailSidebar = ({
 }) => {
   const barRef = useRef(null);
   const componentRef = useHorizontalScroll();
-  const scrollRef = useRef(null);
+  const progressBarRef = useRef(null);
   const { page, setPage } = useContext(ArticleContext);
   const { bodyScroll, setBodyScroll } = useContext(BodyScrollContext);
   const { bodyPos, setBodyPos } = useContext(BodyPosContext);
-  let animationFrameId = null; // Store the animation frame ID
-  let startTime = null;
-  let lastTouchTime = null;
-  const duration = 1000;
-  let isTwoFingerTouch = false;
-  const [scrollState, setScrollState] = useState("0%");
-  const handleMobileScroll = (e) => {};
-  const handleTouchStart = (event) => {
-    if (event.touches.length == 2) {
-      isTwoFingerTouch = true;
-    }
-    cancelAnimationFrame(animationFrameId); // Cancel the previous animation
-    startTime = Date.now();
-    lastTouchTime = startTime;
-    // Your touch start logic here
-  };
-  const handleTouchEnd = (event) => {
-    // if (isTwoFingerTouch) isTwoFingerTouch != isTwoFingerTouch;
-    // Your touch end logic here
-    // Start a new animation if needed
-    // const currentTime = Date.now();
-    // if (touchstart == true)
-    //   if (currentTime < lastTouchTime + duration) {
-    //     animationFrameId = requestAnimationFrame(trackMomentum); // Start a new animation
-    //   }
-  };
-  const trackMomentum = () => {
-    const currentTime = Date.now();
-    const elapsed = Math.min(currentTime - startTime, duration);
-    updateScrollPosition(elapsed / duration);
 
-    if (currentTime < lastTouchTime + duration) {
-      animationFrameId = requestAnimationFrame(trackMomentum); // Store the animation frame ID
-    }
-  };
-  const updateScrollPosition = (progress) => {
-    scrollRef.current.style.width =
-      (componentRef.current.scrollLeft /
-        (componentRef.current.scrollWidth - componentRef.current.clientWidth)) *
-        100 +
-      "%";
-  };
+  const topContentElements = [];
+  const bottomContentElements = [];
+  const [scrollState, setScrollState] = useState("0%");
+
+  const baseURL = window.location.origin;
+
   const handleResize = () => {
-    scrollRef.current.style.width =
+    progressBarRef.current.style.width =
       (componentRef.current.scrollLeft /
         (componentRef.current.scrollWidth - componentRef.current.clientWidth)) *
         100 +
       "%";
     if (componentRef.current.scrollWidth == componentRef.current.clientWidth)
-      scrollRef.current.style.width = "100%";
+      progressBarRef.current.style.width = "100%";
   };
   const handleKeydown = (e) => {
     if (e.key === "Escape" || e.key === "Esc") {
       if (Object.values(page).includes(true)) handleClose();
     }
   };
-  const handleBottomScroll = (event) => {
+  const handleBottomScroll = () => {
     const temp =
       (componentRef.current.scrollLeft /
         (componentRef.current.scrollWidth - componentRef.current.clientWidth)) *
         100 +
       "%";
-
     setScrollState(temp);
   };
-
-  useEffect(() => {
-    const rect = barRef.current.getBoundingClientRect();
-    scrollRef.current.style.width =
-      (componentRef.current.scrollLeft /
-        (componentRef.current.scrollWidth - componentRef.current.clientWidth)) *
-        100 +
-      "%";
-    if (componentRef.current.scrollWidth == componentRef.current.clientWidth)
-      scrollRef.current.style.width = "100%";
-    const onWheel = (e) => {
-      if (e.deltaY == 0) return;
-      e.preventDefault();
-      document
-        .getElementsByClassName("detail-sidebar__content")[0]
-        .scrollTo(100, 100);
-    };
-    // componentRef?.current?.addEventListener("wheel", onWheel);
-    // document
-    //   .getElementById("land-header")
-    //   .style.setProperty("display", "none", "important");
-    barRef?.current?.addEventListener("touchstart", handleTouchStart);
-    barRef?.current?.addEventListener("touchend", handleTouchEnd);
-    barRef.current.addEventListener("touchmove", handleMobileScroll);
-    componentRef.current.addEventListener("scroll", handleBottomScroll);
-    !Object.values(page).includes(true) &&
-      window.addEventListener("resize", handleResize);
-    window.addEventListener("keydown", handleKeydown);
-    return () => {
-      barRef?.current?.removeEventListener("touchstart", handleTouchStart);
-      componentRef.current.removeEventListener("scroll", handleBottomScroll);
-      barRef?.current?.removeEventListener("touchend", handleTouchEnd);
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("keydown", handleKeydown);
-    };
-  }, [page]);
-
   const handleClose = () => {
+    const temp = {};
     document.getElementById(`${id}`).style.left = "100%";
     document.body.style.touchAction = "auto";
     document.body.style.overflow = bodyScroll ? "initial" : "hidden";
@@ -155,20 +82,14 @@ const DetailSidebar = ({
     window.scrollTo(0, bodyPos);
     document.getElementById("land-header").style.borderBottom = "0px #999";
     setBodyScroll(!bodyScroll);
-    // document.getElementsByTagName("html")[0].style.overflow = bodyScroll
-    //   ? "initial"
-    //   : "hidden";
-    const temp = {};
     temp[`${title}`] = false;
     setPage({ ...temp });
     setTimeout(() => {
       componentRef.current.scrollLeft = 0;
-      scrollRef.current.style.width = 0;
+      progressBarRef.current.style.width = 0;
     }, 250);
   };
 
-  const topContentElements = [];
-  const bottomContentElements = [];
   for (let i = 0; i < content.length; i++) {
     if (i <= content.length / 2)
       topContentElements.push(
@@ -195,6 +116,26 @@ const DetailSidebar = ({
         </div>
       );
   }
+
+  useEffect(() => {
+    const rect = barRef.current.getBoundingClientRect();
+    progressBarRef.current.style.width =
+      (componentRef.current.scrollLeft /
+        (componentRef.current.scrollWidth - componentRef.current.clientWidth)) *
+        100 +
+      "%";
+    if (componentRef.current.scrollWidth == componentRef.current.clientWidth)
+      progressBarRef.current.style.width = "100%";
+    componentRef.current.addEventListener("scroll", handleBottomScroll);
+    !Object.values(page).includes(true) &&
+      window.addEventListener("resize", handleResize);
+    window.addEventListener("keydown", handleKeydown);
+    return () => {
+      componentRef.current.removeEventListener("scroll", handleBottomScroll);
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("keydown", handleKeydown);
+    };
+  }, [page]);
 
   return (
     <div className="detail-sidebar__container">
@@ -263,7 +204,7 @@ const DetailSidebar = ({
         <div className="slide">
           <div className="scroll_2"></div>
           <div
-            ref={scrollRef}
+            ref={progressBarRef}
             className="scroll__thumb"
             style={{ width: `${scrollState}` }}
           ></div>
@@ -271,7 +212,7 @@ const DetailSidebar = ({
         {Object.values(page).includes(true) ? (
           <button onClick={() => handleClose()}>
             <img
-              src="/images/close.svg"
+              src={`${baseURL}/images/close.svg`}
               alt="not found"
               width={40}
               height={40}
@@ -280,7 +221,7 @@ const DetailSidebar = ({
         ) : (
           <a href="/">
             <img
-              src="/images/close.svg"
+              src={`${baseURL}/images/close.svg`}
               alt="not found"
               width={40}
               height={40}

@@ -11,7 +11,7 @@ const Privacy = () => {
         title={data[4].title}
         subtitle={data[4].description}
         title_style="privacy__title"
-        logo={data[4].image1}
+        logo={data[4].detailSidebarImage}
         content={data[4].content}
         content_image={data[4].content_image}
       />

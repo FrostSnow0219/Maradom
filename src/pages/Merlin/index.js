@@ -11,7 +11,7 @@ const Merlin = () => {
         title={data[5].title}
         title_style="merlin"
         subtitle={data[5].description}
-        logo={data[5].image1}
+        logo={data[5].detailSidebarImage}
         content={data[5].content}
       />
     </div>

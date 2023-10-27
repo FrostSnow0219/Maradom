@@ -11,7 +11,7 @@ const OpenSource = () => {
         title={data[7].origintitle}
         subtitle={data[7].description}
         title_style="opensource__title"
-        logo={data[7].image1}
+        logo={data[7].detailSidebarImage}
         content={data[7].content}
         content_image={data[7].content_image}
       />

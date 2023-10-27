@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { ArticleContext } from "../utils/context";
 import { BodyScrollContext } from "../utils/context";
 import { BodyPosContext } from "../utils/context";
@@ -7,8 +7,8 @@ function ArticleSingle(props) {
   const { bodyScroll, setBodyScroll } = useContext(BodyScrollContext);
   const { bodyPos, setBodyPos } = useContext(BodyPosContext);
   const handleClick = () => {
-    document.getElementById(`${props.item.id}`).style.left = "0";
     const temp = {};
+    document.getElementById(`${props.item.id}`).style.left = "0";
     temp[props.item.id] = true;
     setPage(temp);
     setBodyScroll(!bodyScroll);
@@ -20,22 +20,12 @@ function ArticleSingle(props) {
     setTimeout(() => {
       document.body.style.position = "fixed";
     }, 250);
-    // document.getElementsByTagName("html")[0].style.overflow = bodyScroll
-    //   ? "initial"
-    //   : "hidden";
   };
-  // useEffect(() => {
-  //   if (!page[`${props.item.id}`]) return;
-  // }, [page]);
   return (
     <div id={`item-${props.index}`} className="item-child">
       <div className="product_item">
         <div className="product_img">
-          <img
-            src={props.item.image}
-            width="originWidth"
-            height="originHeight"
-          />
+          <img src={props.item.landingImage} />
         </div>
         <span className="article_title">
           <span>{props.item.title}</span>
@@ -51,7 +41,6 @@ function ArticleSingle(props) {
           ></a>
         </div>
       </div>
-      <style>{props.item_css}</style>
     </div>
   );
 }

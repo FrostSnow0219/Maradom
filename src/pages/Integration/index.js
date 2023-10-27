@@ -11,7 +11,7 @@ const Integration = () => {
         title={data[6].title}
         subtitle={data[6].description}
         title_style="integration__title"
-        logo={data[6].image1}
+        logo={data[6].detailSidebarImage}
         content={data[6].content}
         content_image={data[6].content_image}
       />

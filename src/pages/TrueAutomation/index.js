@@ -11,7 +11,7 @@ const TrueAutomation = () => {
         title={data[0].title}
         title_style="true-automation__title"
         subtitle={data[0].description}
-        logo={data[0].image1}
+        logo={data[0].detailSidebarImage}
         content={data[0].content}
       />
     </div>

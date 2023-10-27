@@ -15,8 +15,8 @@ import Archie from "./pages/Archie";
 import Merlin from "./pages/Merlin";
 
 import FAQ from "./pages/FAQ";
-// import Blog from "./pages/Blog";
-// import BlogDetail from "./pages/BlogDetail";
+import Blog from "./pages/Blog";
+import BlogDetail from "./pages/BlogDetail";
 
 import { AppProvider } from "./utils/context";
 import { BodyScrollProvider } from "./utils/context";
@@ -46,9 +46,9 @@ function App() {
                 <Route path="/archie" element={<Archie />} />
 
                 <Route path="/faq" element={<FAQ />} />
-                {/* 
+
                 <Route path="/blog" element={<Blog />} />
-                <Route path="/blog/:id" element={<BlogDetail />} /> */}
+                <Route path="/blog/:id" element={<BlogDetail />} />
               </Routes>
               <Footer id="land-footer" />
             </div>

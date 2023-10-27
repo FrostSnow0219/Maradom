@@ -15,9 +15,7 @@ I wanted to be able to use my mobile application to access the assistant remotel
 
 Then I remembered that I had free hosting for PHP websites on Beget and reinvented Long Polling and queues. The implementation was straightforward: the application sent a request to the hosting server, where the PHP code added the request body (JSON) to the end of an array and wrote it to a local file. The Raspberry Pi at home sent a read request to this file every second, and after reading it, cleared the array. This way, I was able to send commands home from anywhere on the planet! Similarly, I set up receiving responses from the assistant: I duplicated the implementation and reversed the roles. Two files and four endpoints on the free PHP hosting provided me with stable bidirectional communication with my home assistant. Shortly after, I taught the assistant to send me messages on its own, such as the room number of the next class at the beginning of each break. Before I could boast about it in college, someone started spamming me at home. I had to add authentication: the login and password were hardcoded in the application, and the server had a check kind of this:
 
-```php
-if ($login == 'markparker' && $password == 'MyVeryStrongP@ssw0rd!') {}; 
-```
+```php if ($login == 'markparker' && $password == 'MyVeryStrongP@ssw0rd!') {}; ```
 
 The application's repositories were private, and the server had no repository (why have a repository for just one file with less than 100 lines?), so the level of security was more than sufficient.
 

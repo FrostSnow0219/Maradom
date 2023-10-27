@@ -50,14 +50,21 @@ const FAQ = () => {
     setSearchInput("");
     setSearchResults(fuzzySearch(" "));
   };
+  const handleResize = () => {
+    const header_height = document.getElementById("faq-header").clientHeight;
+    const footer_height = document.getElementById("faq-footer").clientHeight;
+
+    document.getElementsByClassName("faqContainer")[0].style.minHeight =
+      window.innerHeight - header_height - footer_height + "px";
+  };
+  window.addEventListener("resize", handleResize);
   useEffect(() => {
     document.getElementById("land-header").style.display = "none";
     document.getElementById("land-footer").style.display = "none";
 
-    const header_height =
-      document.getElementsByClassName("header")[0].clientHeight;
-    const footer_height =
-      document.getElementsByClassName("footer")[0].clientHeight;
+    const header_height = document.getElementById("faq-header").clientHeight;
+    const footer_height = document.getElementById("faq-footer").clientHeight;
+
     document.getElementsByClassName("faqContainer")[0].style.minHeight =
       window.innerHeight - header_height - footer_height + "px";
     const results = fuzzySearch(searchInput);
@@ -67,7 +74,7 @@ const FAQ = () => {
 
   return (
     <div className="fContainer">
-      <Header />
+      <Header id="faq-header" />
       <div className="faqContainer">
         <div className="search-form">
           <img src="images/search-normal.svg" />
@@ -87,7 +94,7 @@ const FAQ = () => {
           ))}
         </div>
       </div>
-      <Footer />
+      <Footer id="faq-footer" />
     </div>
   );
 };

@@ -1,5 +1,4 @@
 import React from "react";
-import Css from "json-to-css";
 import ArticleSingle from "./ArticleSingle";
 
 import data from "./../article-data.json";
@@ -9,8 +8,7 @@ function Article() {
     <div className="container">
       <div className="product-grid">
         {data.map((item, index) => {
-          let css = Css.of(item.article_style);
-          return <ArticleSingle index={index} item={item} item_css={css} />;
+          return <ArticleSingle index={index} item={item} />;
         })}
       </div>
     </div>

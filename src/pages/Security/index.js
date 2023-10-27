@@ -11,7 +11,7 @@ const Security = () => {
         title={data[2].title}
         subtitle={data[2].description}
         title_style="security__title"
-        logo={data[2].image1}
+        logo={data[2].detailSidebarImage}
         content={data[2].content}
       />
     </div>

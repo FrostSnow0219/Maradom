@@ -14,14 +14,14 @@ import Security from "./Security";
 import OpenSource from "./OpenSource";
 
 import { ArticleContext } from "../utils/context";
-import MyForm from "../components/myform";
+import ContactForm from "../components/ContactForm";
 function Home() {
   const { page, setPage } = useContext(ArticleContext);
   return (
     <div>
       <div>
         <TopBanner />
-        <MyForm />
+        <ContactForm />
         <MainSlider />
         <Article />
       </div>

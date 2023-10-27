@@ -11,7 +11,7 @@ const AutoEcosystem = () => {
         title={data[1].title}
         subtitle={data[1].subtitle}
         title_style="ecosystem__title"
-        logo={data[1].image1}
+        logo={data[1].detailSidebarImage}
         content={data[1].content}
       />
     </div>

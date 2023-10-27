@@ -53,15 +53,15 @@ const Collapsible = ({
   }, [isOpen]);
   return (
     <>
-      <div className={collapsibleClassName} id={id}>
+      <div
+        className={collapsibleClassName}
+        id={id}
+        onClick={handleFilterOpening}
+      >
         <div>
           <div className={headerClassName}>
             <div className={titleClassName}>{header}</div>
-            <button
-              type="button"
-              className={iconButtonClassName}
-              onClick={handleFilterOpening}
-            >
+            <div className={iconButtonClassName}>
               <div
                 className={`${
                   isOpen
@@ -71,7 +71,7 @@ const Collapsible = ({
               >
                 <img src="/images/arrow_less.svg" />
               </div>
-            </button>
+            </div>
           </div>
         </div>
         <div className={contentClassName} style={{ height }}>

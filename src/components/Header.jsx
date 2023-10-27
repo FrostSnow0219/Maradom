@@ -17,14 +17,6 @@ function Header({ id }) {
       document.body.style.overflow = "hidden";
   };
   const location = useLocation();
-  const isSticky = (e) => {
-    console.log("scroll");
-    const header = document.querySelector(".header");
-    const scrollTop = window.scrollY;
-    scrollTop >= 250
-      ? header.classList.add("is-sticky")
-      : header.classList.remove("is-sticky");
-  };
   useEffect(() => {
     setHamburgerOpen(false);
   }, [location]);
@@ -43,7 +35,7 @@ function Header({ id }) {
             <a href="/">MajorDom</a>
           </div>
 
-          <div onClick={toggleHamburger}>
+          <div onClick={() => toggleHamburger()}>
             <Hamburger isOpen={hamburgerOpen} />
           </div>
         </div>
@@ -51,7 +43,7 @@ function Header({ id }) {
       </div>
       <style>{`
         .burger .menu-icon:after {
-            width: ${hamburgerOpen ? "39px" : "20px"};
+            width: ${hamburgerOpen ? "39px" : "20px !important"};
             background-color: ${hamburgerOpen ? "#fff" : "#eee"};
             opacity: ${hamburgerOpen ? "1" : ".5"};
         }

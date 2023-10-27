@@ -1,4 +1,14 @@
 /* ___RESET___ */
+body::-webkit-scrollbar {
+	background-color: transparent;
+	width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: rgb(21, 21, 21);
+	border: 1px solid rgb(200, 200, 200);
+	border-radius: 8px;
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -965,7 +975,7 @@ a.purple_btn:hover {
 		
 	}	
 	.copyright{
-		margin-top: 40px;
+		/* margin-top: 40px; */
 	}
 }
 @media screen and (max-width: 920px){
@@ -1092,6 +1102,10 @@ a.purple_btn:hover {
 	.blog__container {
 		padding-left: 40px !important;
 		padding-right: 40px !important;
+		flex-direction: column !important;
+	}
+	.blog__container .blog-item {
+		width: 100% !important;
 	}
 	.collapsible-header-edonec {
 		font-size: 22px !important;
@@ -1320,6 +1334,26 @@ a.purple_btn:hover {
 	.faqContainer {
 		padding-top: 30px !important;	
 	}
+	.article__container .backBtn {
+		position: fixed !important;
+		bottom: 150px !important;
+	}
+	.article-content__container {
+		max-width: 70% !important;
+	}
+	.backBtn {
+		font-size: 18px;
+
+	}
+
+	.backBtn span {
+		display: none;
+	}
+
+	.upBTN img {
+		width: 30px;
+		height: 30px;
+	}
 }
 @media screen and (max-width: 400px){
 	.main_slider {
@@ -1338,6 +1372,12 @@ a.purple_btn:hover {
 	.main_section {
 		margin-top: 100px;
 		margin-bottom: 100px;
+	}
+	.menu-text{
+		display: none;
+	}
+	.menu-icon{
+		margin-right: 0px !important
 	}
 	.product-grid {
 		margin-top: 30px;
@@ -1416,6 +1456,9 @@ a.purple_btn:hover {
 	}	
 	#item-0 .article_title {
 		font-size: 26px !important;
+	}
+	.backBtn {
+		left: 5px !important;
 	}
 }
 .article_text{
@@ -1982,6 +2025,7 @@ a.purple_btn:hover {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	transition: 0.3s;
 	border-radius: 18px;
+	cursor: pointer;
 }
 
 .collapsible-card-edonec:hover {
@@ -1992,22 +2036,25 @@ a.purple_btn:hover {
 	padding-top: 90px;
 	padding-bottom: 80px;
 	display: flex;
+	/* justify-content: space-between; */
 	gap: 30px;
 	flex-wrap: wrap;
 	background-color: black;
-	overflow-y: scroll;
 }
 .blog__container .blog-item {
 	display: flex;
 	flex-direction: column;
+	width: calc((100% - 30px) / 2);
 	gap: 10px;
-	flex-grow: 1;
 }
 .blog__container .blog-item__img{
 	width: 100%;
-	height: 300px;
-	background-color: #161617;
+	min-height: 50%;
 	border-radius: 24px;
+}
+.blog__container .blog-item__img  img{
+	position: inherit;
+	width: 100%;
 }
 .blog__container .blog-item__release {
 	padding: 10px 15px;
@@ -2019,12 +2066,115 @@ a.purple_btn:hover {
 {
 	font-size: 24px;
 }
+
+.article__container {
+	 position: relative;
+}
+.article__container .backBtn {
+	position: fixed;
+	left: 20px;
+	bottom: 150px;
+	margin-bottom: 10px;
+	color: rgb(119, 119, 119);
+	text-decoration-line: underline;
+}
+
+.article-content__container {
+	padding: 40px 0;
+	max-width: 90%;
+	width: 800px;
+	margin: auto;
+	line-height: 150%;
+}
+.article-content__container .article-content__header h2 {
+	margin-bottom: 8px;
+	font-size: 2rem;
+	font-weight: 700;
+	line-height: 130%;
+}
+.article-content__container .article-content__header .published-date {
+	font-style: italic;
+	font-size: 18px;
+	opacity: 0.5;
+}
+.article-content__container .upBTN {
+	position: absolute;
+	bottom: 0px;
+	right: 5%;
+	filter: invert(1);
+}
+
+.article-content {
+	display: flex;
+	flex-direction: column;
+	margin-top: 16px;
+	gap: 15px;
+}
+
+.article-content pre {
+	border-radius: 7px;
+	overflow: auto;
+}
+.article-content pre code {
+	border-radius: 7px;
+	max-width: 100%;
+}
+
+.article-content code {
+	padding: 2px;
+	max-width: 100%;
+	border-radius: 4px;
+}
+.article-content .title{
+	font-size: 34px;
+	font-weight: 700;
+}
+
+.article-content ul{
+	padding-left: 40px;
+	list-style-type: disc;
+}
+
+.article-content h2 {
+	font-size: 1.9rem;
+	font-weight: 400;
+}
+
+.article-content h3{
+	font-size: 1.5rem;
+}
+
+.codeFormatter {
+	position: relative;
+}
+
+.codeFormatter .copyBTN {
+	display: none;
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	padding: 4px;
+	width: 30px;
+	height: 30px;
+	border: 1px solid rgb(150, 150, 150);
+	cursor: pointer;
+}
+
+.copyBTN-show {
+	display: block !important;
+}
+.codeFormatter pre{
+	margin: 0;
+}
+
+
 .faqContainer { 
 	padding: 0 80px;
 	padding-top: 70px;
 	padding-bottom: 80px;
 	background-color: black;
 }
+
 .QAList { 
 	display: flex;
 	flex-direction: column;
