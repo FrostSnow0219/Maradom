@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import data from "../../blog-data.json";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { nightOwl } from "react-syntax-highlighter/dist/cjs/styles/prism";
 function copyToClipboard(text) {
   // Create a temporary textarea element to hold the text
   const textArea = document.createElement("textarea");
@@ -67,6 +67,7 @@ const Content = ({ mdxContent }) => {
             <SyntaxHighlighter
               language="php"
               value={inCodeBlock.content.join("\n")}
+              style={nightOwl}
               id={`codeFormatter${id}`}
               onMouseOver={(e) => handleMouseOver(e)}
               onMouseOut={(e) => handleMouseOut(e)}
@@ -82,9 +83,17 @@ const Content = ({ mdxContent }) => {
               onClick={(e) => handleCopyBTN(e)}
             >
               {copied[id] && isOver[id] ? (
-                <img src="/images/copied.svg" id={`copyBTNImg${id}`} />
+                <img
+                  src="/images/copied.svg"
+                  id={`copyBTNImg${id}`}
+                  className="copied"
+                />
               ) : (
-                <img src="/images/copy.svg" id={`copyBTNImg${id}`} />
+                <img
+                  src="/images/copy.svg"
+                  id={`copyBTNImg${id}`}
+                  className="copy"
+                />
               )}
             </div>
           </div>
@@ -122,7 +131,7 @@ const Content = ({ mdxContent }) => {
         ) // Inline code
         .replace(
           /\[([^[]+)]\(([^)]+)\)/g,
-          '<a href="$2" style="font-weight: 600; color: rgb(76, 49, 196)">$1</a>'
+          '<a href="$2" style="font-weight: 600; color: rgb(106, 109, 236)">$1</a>'
         )
         .replace(/\_(.*?)\_/g, '<span style="font-style: italic">$1</span>');
       // Header 6 (e.g., "###### Your Header")
@@ -142,7 +151,7 @@ const Content = ({ mdxContent }) => {
         ) // Inline code
         .replace(
           /\[([^[]+)]\(([^)]+)\)/g,
-          '<a href="$2" style="font-weight: 600; color: rgb(76, 49, 196)">$1</a>'
+          '<a href="$2" style="font-weight: 600; color: rgb(106, 109, 236)">$1</a>'
         )
         .replace(/\_(.*?)\_/g, '<span style="font-style: italic">$1</span>'); // Italic; // Add a class to the anchor tag
 
@@ -171,7 +180,7 @@ const Content = ({ mdxContent }) => {
           ) // Inline code
           .replace(
             /\[([^[]+)]\(([^)]+)\)/g,
-            '<a href="$2" style="font-weight: 600; color: rgb(76, 49, 196)">$1</a>'
+            '<a href="$2" style="font-weight: 600; color: rgb(106, 109, 236)">$1</a>'
           )
           .replace(
             /\_\[(.*?)\]\_/g,
@@ -183,11 +192,7 @@ const Content = ({ mdxContent }) => {
       }
     }
   });
-  const handleScroll = () => {
-    // setScrollPos(window.scrollY);
-  };
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
     // window.addEventListener("mousemove", (e) => {
     //   const codeRects = document.getElementsByClassName("codeFormatter");
     //   console.log(codeRects[0].getBoundingClientRect(), e.clientX, e.clientY);
@@ -204,7 +209,6 @@ const Content = ({ mdxContent }) => {
     //     }
     //   }
     // });
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return <div className="article-content">{content}</div>;

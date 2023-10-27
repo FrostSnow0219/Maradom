@@ -21,7 +21,9 @@ const Blog = () => {
             <img src={item.bg_url} alt="" />
           </a>
           <span className="blog-item__release">{item.release}</span>
-          <div className="blog-item__title">{item.title}</div>
+          <a href={`${baseURL}/blog/${item.url}`} className="blog-item__title">
+            <div>{item.title}</div>
+          </a>
         </div>
       ))}
     </div>

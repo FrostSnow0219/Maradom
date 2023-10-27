@@ -2065,10 +2065,17 @@ a.purple_btn:hover {
 .blog__container .blog-item__title
 {
 	font-size: 24px;
+	transition: 0.3s ease-in-out;
+}
+
+.blog__container .blog-item__title:hover {
+	color: rgb(150, 150, 150);
+	font-size: 24px;
 }
 
 .article__container {
 	 position: relative;
+	 background-color: rgb(13, 17, 23);
 }
 .article__container .backBtn {
 	position: fixed;
@@ -2148,6 +2155,10 @@ a.purple_btn:hover {
 	position: relative;
 }
 
+.codeFormatter pre{
+	background-color: rgb(22, 27, 34) !important;
+}
+
 .codeFormatter .copyBTN {
 	display: none;
 	position: absolute;
@@ -2163,6 +2174,11 @@ a.purple_btn:hover {
 .copyBTN-show {
 	display: block !important;
 }
+
+.codeFormatter .copy {
+	filter: invert(1);
+}
+
 .codeFormatter pre{
 	margin: 0;
 }
